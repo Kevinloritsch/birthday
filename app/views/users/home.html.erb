@@ -1,0 +1,89 @@
+<!--BTW Controllers Make This Possible KEVIN-->
+
+
+<p> Today's date is <%= Time.zone.now.month %>/<%= Time.zone.now.day %>. </p>
+<% today_month = Time.zone.now.month %>
+<% today_day = Time.zone.now.day %>
+
+<% user_month = 0 %>
+<% user_day = 0 %>
+
+<% days_till = 0 %>
+<% counter = 0 %>
+<% checker = false %>
+<% arr = Array.new %>
+
+<% while counter < 366 %>
+
+    <% @users.each do |user| %>
+        <% user_month_string = user.birthday.slice(0..1) %>
+        <% user_month = user_month_string.to_i %>
+
+        <% user_day_string = user.birthday.slice(3..4) %>
+        <% user_day = user_day_string.to_i %>
+
+
+        <% if today_month == user_month && today_day == user_day %>
+            <% checker = true %>
+            <% arr.push(user) %>
+        <% end %>
+    <% end %>
+
+
+
+    <% if checker != true %>
+        <% days_till = days_till + 1 %>
+        <% today_day = today_day + 1 %>
+
+        <% if today_month == 1 || today_month == 3 || today_month == 5 || today_month == 7 || today_month == 8 || today_month == 10 %>
+            <% if today_day > 31 %>
+                <% today_day = 1 %>
+                <% today_month = today_month + 1 %>
+            <% end %>
+
+        <% elsif today_month == 12 %>
+            <% if today_day > 31 %>
+                <% today_day = 1 %>
+                <% today_month = 1 %>
+            <% end %>
+
+        <% elsif today_month == 4 || today_month == 6 || today_month == 9 || today_month == 11 %>
+            <% if today_day > 30 %>
+                <% today_day = 1 %>
+                <% today_month = today_month + 1 %>
+            <% end %>
+
+        <% elsif today_month == 2 %>
+            <% if Time.zone.now.month < 3 && Time.zone.now.year % 4 == 0 %>
+                <% if today_day > 29 %>
+                    <% today_day = 1 %>
+                    <% today_month = today_month + 1 %>
+                <% end %>
+            <% elseif Time.zone.now.month > 2 && Time.zone.now.year + 1 % 4 == 0 %>
+                <% if today_day > 29 %>
+                    <% today_day = 1 %>
+                    <% today_month = today_month + 1 %>
+                <% end %>
+            <% else %>
+                <% if today_day > 28 %>
+                    <% today_day = 1 %>
+                    <% today_month = today_month + 1 %>
+                <% end %>
+            <% end %>
+        <% end %>
+
+
+    <% else %>
+        <% today_month = 100 %>
+    <% end %>
+
+    <% counter = counter + 1 %>
+<% end %>
+
+<p>The closest birthday is in <%= days_till %> days, on <%= arr.first.birthday %>.</p>
+<p> Congratulations to: </p>
+
+
+<% for i in arr %>
+    <p> <%= i.first_name %> <%= i.last_name %> </p>
+<% end %>
