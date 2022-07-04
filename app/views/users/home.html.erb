@@ -1,9 +1,8 @@
 <!--BTW Controllers Make This Possible KEVIN-->
 
-
-<p> Today's date is <%= Time.zone.now.month %>/<%= Time.zone.now.day %>. </p>
-<% today_month = Time.zone.now.month %>
-<% today_day = Time.zone.now.day %>
+<p> Today's date is <%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>/<%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>. </p>
+<% today_month = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>
+<% today_day = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>
 
 <% user_month = 0 %>
 <% user_day = 0 %>
@@ -87,3 +86,49 @@
 <% for i in arr %>
     <p> <%= i.first_name %> <%= i.last_name %> </p>
 <% end %>
+
+
+
+
+
+<svg height="400" width="450">
+  <path class="path-H" d="
+            M 10 10
+            L 10 100
+            M 10 50
+            L 50 50
+            M 50 10
+            L 50 100"
+    stroke="blue" stroke-width="5" fill="none" />
+
+    <path class="path-A" d="
+            M 60 100
+            L 85 10
+            L 110 100
+            M 72.5 50
+            L 97.5 50"
+    stroke="blue" stroke-width="5" fill="none" />
+
+    <path class="path-P-1" d="
+            M 120 10
+            L 120 100
+            M 120 10
+            C 120,10 180,32.5 120,55"
+    stroke="blue" stroke-width="5" fill="none" />
+
+    <path class="path-P-2" d="
+            M 160 10
+            L 160 100
+            M 160 10
+            C 160,10 220,32.5 160,55"
+    stroke="blue" stroke-width="5" fill="none" />
+
+    <path class="path-Y" d="
+            M 200 10
+            L 225 50
+            L 250 10
+            M 225 50
+            L 225 100"
+    stroke="blue" stroke-width="5" fill="none" />
+
+</svg>

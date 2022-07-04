@@ -10,6 +10,13 @@ section
 {
     overflow: auto;
 }
+
+textarea
+{
+    resize: vertical;
+}
+
+    
         
 
 /* forms */
@@ -56,4 +63,58 @@ input
         border-bottom: 1px solid $gray-lighter;
     }
 }
+
+/* header */
+#logo
+{
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    font-family: 'Copperplate';
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+}
+
+#logo:hover
+{
+color: #fff;
+text-decoration: none;
+}
+
+#sub_header
+{
+    color: white;
+}
+
+#sub_header:hover
+{
+    color: #C3C3CA;
+}
     
+
+/* Home */
+.path-H
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash 5s linear infinite;
+}
+
+.path-A
+{
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: dash 5s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes dash
+{
+    to
+    {
+        stroke-dashoffset: 0;
+    }
+}
