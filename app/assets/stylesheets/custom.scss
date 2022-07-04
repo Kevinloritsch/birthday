@@ -8,7 +8,7 @@ body
     
 section
 {
-    overflow: auto;
+    overflow: hidden;
 }
 
 textarea
@@ -16,6 +16,11 @@ textarea
     resize: vertical;
 }
 
+@media only screen and (max-width: 768px) {
+    .spacer {
+      margin-top: 12%;
+    }
+  }
     
         
 
