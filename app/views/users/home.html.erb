@@ -1,136 +1,312 @@
 <!--BTW Controllers Make This Possible KEVIN-->
 
+
+<style>
+.home
+{
+    text-align: center;
+    font-family: "Copperplate";
+    font-size: 1.8em;
+}
+</style>
+
 <div class="spacer"></div>
 
-<p> Today's date is <%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>/<%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>. </p>
-<% today_month = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>
-<% today_day = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>
+<div class="home">
+    <p> Today's date is <%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>/<%= Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>. </p>
+    <% today_month = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").month %>
+    <% today_day = Time.zone.now.in_time_zone("Pacific Time (US & Canada)").day %>
 
-<% user_month = 0 %>
-<% user_day = 0 %>
+    <% user_month = 0 %>
+    <% user_day = 0 %>
 
-<% days_till = 0 %>
-<% counter = 0 %>
-<% checker = false %>
-<% arr = Array.new %>
+    <% days_till = 0 %>
+    <% counter = 0 %>
+    <% checker = false %>
+    <% arr = Array.new %>
 
-<% while counter < 366 %>
+    <% while counter < 366 %>
 
-    <% @users.each do |user| %>
-        <% user_month_string = user.birthday.slice(0..1) %>
-        <% user_month = user_month_string.to_i %>
+        <% @users.each do |user| %>
+            <% user_month_string = user.birthday.slice(0..1) %>
+            <% user_month = user_month_string.to_i %>
 
-        <% user_day_string = user.birthday.slice(3..4) %>
-        <% user_day = user_day_string.to_i %>
-
-
-        <% if today_month == user_month && today_day == user_day %>
-            <% checker = true %>
-            <% arr.push(user) %>
-        <% end %>
-    <% end %>
+            <% user_day_string = user.birthday.slice(3..4) %>
+            <% user_day = user_day_string.to_i %>
 
 
-
-    <% if checker != true %>
-        <% days_till = days_till + 1 %>
-        <% today_day = today_day + 1 %>
-
-        <% if today_month == 1 || today_month == 3 || today_month == 5 || today_month == 7 || today_month == 8 || today_month == 10 %>
-            <% if today_day > 31 %>
-                <% today_day = 1 %>
-                <% today_month = today_month + 1 %>
-            <% end %>
-
-        <% elsif today_month == 12 %>
-            <% if today_day > 31 %>
-                <% today_day = 1 %>
-                <% today_month = 1 %>
-            <% end %>
-
-        <% elsif today_month == 4 || today_month == 6 || today_month == 9 || today_month == 11 %>
-            <% if today_day > 30 %>
-                <% today_day = 1 %>
-                <% today_month = today_month + 1 %>
-            <% end %>
-
-        <% elsif today_month == 2 %>
-            <% if Time.zone.now.month < 3 && Time.zone.now.year % 4 == 0 %>
-                <% if today_day > 29 %>
-                    <% today_day = 1 %>
-                    <% today_month = today_month + 1 %>
-                <% end %>
-            <% elseif Time.zone.now.month > 2 && Time.zone.now.year + 1 % 4 == 0 %>
-                <% if today_day > 29 %>
-                    <% today_day = 1 %>
-                    <% today_month = today_month + 1 %>
-                <% end %>
-            <% else %>
-                <% if today_day > 28 %>
-                    <% today_day = 1 %>
-                    <% today_month = today_month + 1 %>
-                <% end %>
+            <% if today_month == user_month && today_day == user_day %>
+                <% checker = true %>
+                <% arr.push(user) %>
             <% end %>
         <% end %>
 
 
-    <% else %>
-        <% today_month = 100 %>
+
+        <% if checker != true %>
+            <% days_till = days_till + 1 %>
+            <% today_day = today_day + 1 %>
+
+            <% if today_month == 1 || today_month == 3 || today_month == 5 || today_month == 7 || today_month == 8 || today_month == 10 %>
+                <% if today_day > 31 %>
+                    <% today_day = 1 %>
+                    <% today_month = today_month + 1 %>
+                <% end %>
+
+            <% elsif today_month == 12 %>
+                <% if today_day > 31 %>
+                    <% today_day = 1 %>
+                    <% today_month = 1 %>
+                <% end %>
+
+            <% elsif today_month == 4 || today_month == 6 || today_month == 9 || today_month == 11 %>
+                <% if today_day > 30 %>
+                    <% today_day = 1 %>
+                    <% today_month = today_month + 1 %>
+                <% end %>
+
+            <% elsif today_month == 2 %>
+                <% if Time.zone.now.month < 3 && Time.zone.now.year % 4 == 0 %>
+                    <% if today_day > 29 %>
+                        <% today_day = 1 %>
+                        <% today_month = today_month + 1 %>
+                    <% end %>
+                <% elseif Time.zone.now.month > 2 && Time.zone.now.year + 1 % 4 == 0 %>
+                    <% if today_day > 29 %>
+                        <% today_day = 1 %>
+                        <% today_month = today_month + 1 %>
+                    <% end %>
+                <% else %>
+                    <% if today_day > 28 %>
+                        <% today_day = 1 %>
+                        <% today_month = today_month + 1 %>
+                    <% end %>
+                <% end %>
+            <% end %>
+
+
+        <% else %>
+            <% today_month = 100 %>
+        <% end %>
+
+        <% counter = counter + 1 %>
     <% end %>
 
-    <% counter = counter + 1 %>
-<% end %>
+    <p>The closest birthday is in <%= days_till %> days, on <%= arr.first.birthday %>.</p>
+    <p> Congratulations to: 
 
-<p>The closest birthday is in <%= days_till %> days, on <%= arr.first.birthday %>.</p>
-<p> Congratulations to: </p>
+    <% toCount = arr.length %>
+    <% willCount = 0 %>
+    <% for i in arr %>
+        <% willCount = willCount + 1 %>
+        <% if willCount == toCount %>
+            <%= i.first_name %> <%= i.last_name %>!!!
+        <% else %>
+            <%= i.first_name %> <%= i.last_name%> and 
+        <% end %>
+
+    <% end %>
+    </p>
+</div>
 
 
-<% for i in arr %>
-    <p> <%= i.first_name %> <%= i.last_name %> </p>
-<% end %>
 
+<svg viewBox="0 0 400 200" style="font: 14.5em/1 Open Sans, Impact; text-transform: uppercase; margin: 0; border-radius: 50px;">
 
-
-
-
-<svg height="400" width="450">
+    <path class="path-H" d="
+            M 80 10
+            L 80 100
+            M 80 50
+            L 120 50
+            M 120 10
+            L 120 100"
+    stroke="black" stroke-width="8" fill="none" />
   <path class="path-H" d="
-            M 10 10
-            L 10 100
-            M 10 50
-            L 50 50
-            M 50 10
-            L 50 100"
-    stroke="blue" stroke-width="5" fill="none" />
+            M 80 10
+            L 80 100
+            M 80 50
+            L 120 50
+            M 120 10
+            L 120 100"
+    stroke="#B10717" stroke-outline="black" stroke-width="6.5" fill="none" />
 
     <path class="path-A" d="
-            M 60 100
-            L 85 10
-            L 110 100
-            M 72.5 50
-            L 97.5 50"
-    stroke="blue" stroke-width="5" fill="none" />
+            M 130 100
+            L 155 10
+            L 180 100
+            M 142.5 50
+            L 167.5 50"
+    stroke="black" stroke-width="8" fill="none" />
+    <path class="path-A" d="
+            M 130 100
+            L 155 10
+            L 180 100
+            M 142.5 50
+            L 167.5 50"
+    stroke="#E7C80C" stroke-width="6.5" fill="none" />
 
     <path class="path-P-1" d="
-            M 120 10
-            L 120 100
-            M 120 10
-            C 120,10 180,32.5 120,55"
-    stroke="blue" stroke-width="5" fill="none" />
+            M 190 5
+            L 190 100
+            M 190 5
+            C 190,10 250,32.5 190,55"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-P-1" d="
+            M 190 5
+            L 190 100
+            M 190 5
+            C 190,10 250,32.5 190,55"
+    stroke="#20BD0D" stroke-width="6.5" fill="none" />
+
+        <path class="path-P-2" d="
+        M 230 5
+        L 230 100
+        M 230 5
+        C 230,10 290,32.5 230,55"
+    stroke="black" stroke-width="8" fill="none" />
 
     <path class="path-P-2" d="
-            M 160 10
-            L 160 100
-            M 160 10
-            C 160,10 220,32.5 160,55"
-    stroke="blue" stroke-width="5" fill="none" />
+            M 230 5
+            L 230 100
+            M 230 5
+            C 230,10 290,32.5 230,55"
+    stroke="#1096E4" stroke-width="6.5" fill="none" />
 
     <path class="path-Y" d="
-            M 200 10
-            L 225 50
-            L 250 10
-            M 225 50
-            L 225 100"
-    stroke="blue" stroke-width="5" fill="none" />
+            M 270 10
+            L 295 50
+            L 320 10
+            M 295 50
+            L 295 100"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-Y" d="
+            M 270 10
+            L 295 50
+            L 320 10
+            M 295 50
+            L 295 100"
+    stroke="#C316D8" stroke-width="6.5" fill="none" />
+
+    <path class="path-B" d="
+            M 25 110
+            L 25 200
+            M 25 110
+            C 25,115 85,132.5 25,155
+            C 25,150 85,177.5 25,195"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-B" d="
+            M 25 110
+            L 25 200
+            M 25 110
+            C 25,115 85,132.5 25,155
+            C 25,150 85,177.5 25,195"
+    stroke="#EA120B" stroke-width="6.5" fill="none" />
+
+        <path class="path-I" d="
+            M 75 115
+            L 75 195"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-I" d="
+            M 75 115
+            L 75 195"
+    stroke="#F79D0D" stroke-width="6.5" fill="none" />
+
+    <path class="path-R" d="
+            M 95 110
+            L 95 195
+            M 95 110
+            C 95,115 155,132.5 95,155
+            L 125 195"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-R" d="
+            M 95 110
+            L 95 195
+            M 95 110
+            C 95,115 155,132.5 95,155
+            L 125 195"
+    stroke="#E8EF0D" stroke-width="6.5" fill="none" />
+
+    <path class="path-T" d="
+            M 135 115
+            L 175 115
+            M 155 115
+            L 155 195"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-T" d="
+            M 135 115
+            L 175 115
+            M 155 115
+            L 155 195"
+    stroke="#10E41D" stroke-width="6.5" fill="none" />
+
+    <path class="path-H-2" d="
+            M 185 110
+            L 185 195
+            M 225 110
+            L 225 195
+            M 185 152.5
+            L 225 152.5"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-H-2" d="
+            M 185 110
+            L 185 195
+            M 225 110
+            L 225 195
+            M 185 152.5
+            L 225 152.5"
+    stroke="#10E4CA" stroke-width="6.5" fill="none" />
+
+    <path class="path-D" d="
+            M 240 110
+            L 240 195
+            M 240 110
+            C 240,115 305,152.5 240,192"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-D" d="
+            M 240 110
+            L 240 195
+            M 240 110
+            C 240,115 305,152.5 240,192"
+    stroke="#105BE4" stroke-width="6.5" fill="none" />
+
+    <path class="path-A-2" d="
+            M 275 195
+            L 300 110
+            L 325 195
+            M 287.5 155
+            L 312.5 155"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-A-2" d="
+            M 275 195
+            L 300 110
+            L 325 195
+            M 287.5 155
+            L 312.5 155"
+    stroke="#E410A0" stroke-width="6.5" fill="none" />
+
+    <path class="path-Y-2" d="
+            M 325 110
+            L 350 155
+            L 375 110
+            M 350 155
+            L 350 195"
+    stroke="black" stroke-width="8" fill="none" />
+
+    <path class="path-Y-2" d="
+            M 325 110
+            L 350 155
+            L 375 110
+            M 350 155
+            L 350 195"
+    stroke="#9C10E4" stroke-width="6.5" fill="none" />
 
 </svg>

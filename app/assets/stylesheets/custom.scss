@@ -4,7 +4,10 @@
 body
 {
     padding-top: 60px;
+    background-color: #23F4CB;
+    background-image: url('/assets/confetti.webp');
 }
+
     
 section
 {
@@ -61,11 +64,12 @@ input
 {
     list-style: none;
     margin: 0;
+    font-size: larger;
     li
     {
         overflow: auto;
         padding: 10px 0;
-        border-bottom: 1px solid $gray-lighter;
+        border-bottom: 1px solid $gray-darker;
     }
 }
 
@@ -105,21 +109,132 @@ text-decoration: none;
 {
     stroke-dasharray: 200;
     stroke-dashoffset: 200;
-    animation: dash 5s linear infinite;
+    animation: dash-200 21s linear infinite;
 }
 
 .path-A
 {
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
-    animation: dash 5s linear infinite;
-    animation-delay: 2s;
+    animation: dash-400 21s linear infinite;
+    animation-delay: 1.25s;
 }
 
-@keyframes dash
+.path-P-1
 {
-    to
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 2.5s;
+}
+
+.path-P-2
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 3.75s;
+}
+
+.path-Y
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 5s;
+}
+
+.path-B
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+}
+
+.path-I
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: .71s;
+}
+
+.path-R
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 1.42s;
+}
+
+.path-T
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 2.13s;
+}
+
+.path-H-2
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 2.84s;
+}
+
+.path-D
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 3.55s;
+}
+
+.path-A-2
+{
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: dash-400 21s linear infinite;
+    animation-delay: 4.26s;
+}
+
+.path-Y-2
+{
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: dash-200 21s linear infinite;
+    animation-delay: 5s;
+}
+
+@keyframes dash-200
+{
+    0%
+    {
+        stroke-dashoffset: 200;
+    }
+    30%
     {
         stroke-dashoffset: 0;
+    }
+    100%
+    {
+        stroke-dashoffset: 200;
+    }
+}
+
+@keyframes dash-400
+{
+    0%
+    {
+        stroke-dashoffset: 400;
+    }
+    30%
+    {
+        stroke-dashoffset: 0;
+    }
+    100%
+    {
+        stroke-dashoffset: 400;
     }
 }
