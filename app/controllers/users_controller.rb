@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       flash[:success] = "Account Registered!"
       redirect_to '/'
     else
-      render 'new'
+      flash[:danger] = @user.errors.full_messages
+      redirect_to '/'
     end
   end
 
